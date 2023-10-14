@@ -1,0 +1,53 @@
+## Rank-N-Contrast: Learning Continuous Representations for Regression
+
+[Paper](https://arxiv.org/abs/2210.01189) | [BibTex](assets/bibtex.txt)
+
+<img src='assets/teaser.png'>
+
+Rank-N-Contrast: Learning Continuous Representations for Regression\
+[Kaiwen Zha](https://people.csail.mit.edu/kzha/)\*, [Peng Cao](https://people.csail.mit.edu/pengcao/)\*, [Jeany Son](https://jeanyson.github.io/), [Yuzhe Yang](https://www.mit.edu/~yuzhe/), [Dina Katabi](http://people.csail.mit.edu/dina/) (*equal contribution)\
+_NeurIPS 2023 (Spotlight)_
+
+### Loss Function
+The loss function [`RnCLoss`](./loss.py#L34) in [`loss.py`](./loss.py) takes `features` and `labels` as input, and return the loss.
+```python
+from loss import RnCLoss
+
+# define loss function with temperature, label difference measure, 
+# and feature similarity measure
+criterion = RnCLoss(temperature=2, label_diff='l1', feature_sim='l2')
+
+# features: [bs, 2, feat_dim]
+features = ...
+# labels: [bs, label_dim]
+labels = ...
+
+# compute RnC loss
+loss = criterion(features, labels)
+```
+
+### Running
+Download AgeDB dataset from [here](https://ibug.doc.ic.ac.uk/resources/agedb/) and extract the zip file (you may need to contact the authors of AgeDB dataset for the zip password) to folder `./data`.
+
+1. To train the encoder, run 
+    ```
+    python main_rnc.py
+    ```
+    
+    The checkpoint of the encoder will be saved to `./save`.
+
+2. To train the predictor, run
+    ```
+    python main_linear.py --ckpt <PATH_TO_THE_TRAINED_ENCODER_CHECKPOINT>
+    ```
+
+### Citation
+If you use this code for your research, please cite our paper:
+```bibtex
+@inproceedings{zha2023rankncontrast,
+    title={Rank-N-Contrast: Learning Continuous Representations for Regression},
+    author={Zha, Kaiwen and Cao, Peng and Son, Jeany and Yang, Yuzhe and Katabi, Dina},
+    booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
+    year={2023}
+}
+```
