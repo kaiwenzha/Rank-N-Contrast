@@ -29,17 +29,20 @@ loss = criterion(features, labels)
 ### Running
 Download AgeDB dataset from [here](https://ibug.doc.ic.ac.uk/resources/agedb/) and extract the zip file (you may need to contact the authors of AgeDB dataset for the zip password) to folder `./data`.
 
-1. To train the encoder, run 
+- To train the model with the L1 loss, run 
+    ```
+    python main_l1.py
+    ```
+- To train the model with the RnC framework, first run 
     ```
     python main_rnc.py
     ```
     
-    The checkpoint of the encoder will be saved to `./save`.
-
-2. To train the predictor, run
+    to train the encoder. The checkpoint of the encoder will be saved to `./save`. Then, run
     ```
     python main_linear.py --ckpt <PATH_TO_THE_TRAINED_ENCODER_CHECKPOINT>
     ```
+  to train the regressor.
 
 ### Citation
 If you use this code for your research, please cite our paper:

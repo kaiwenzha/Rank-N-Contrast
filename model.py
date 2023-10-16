@@ -152,3 +152,17 @@ class Encoder(nn.Module):
     def forward(self, x):
         feat = self.encoder(x)
         return feat
+
+
+class SupResNet(nn.Module):
+    def __init__(self, name='resnet18', num_classes=10):
+        super(SupResNet, self).__init__()
+        model_fun, dim_in = model_dict[name]
+        self.encoder = model_fun()
+        self.fc = nn.Linear(dim_in, num_classes)
+
+    def forward(self, x):
+        feat = self.encoder(x)
+        output = self.fc(feat)
+
+        return output
