@@ -39,6 +39,8 @@ def parse_option():
     opt.model_name = 'Regressor_{}_ep_{}_lr_{}_d_{}_wd_{}_mmt_{}_bsz_{}_trial_{}'. \
         format(opt.dataset, opt.epochs, opt.learning_rate, opt.lr_decay_rate,
                opt.weight_decay, opt.momentum, opt.batch_size, opt.trial)
+    if len(opt.resume):
+        opt.model_name = opt.resume.split('/')[-1][:-len('_last.pth')]
     opt.save_folder = '/'.join(opt.ckpt.split('/')[:-1])
 
     logging.root.handlers = []
@@ -191,8 +193,17 @@ def main():
     save_file_last = os.path.join(opt.save_folder, f"{opt.model_name}_last.pth")
     best_error = 1e5
 
+    start_epoch = 1
+    if len(opt.resume):
+        ckpt_state = torch.load(opt.resume)
+        regressor.load_state_dict(ckpt_state['state_dict'])
+        start_epoch = ckpt_state['epoch'] + 1
+        best_error = ckpt_state['best_error']
+        print(f"<=== Epoch [{ckpt_state['epoch']}] Resumed from {opt.resume}!")
+
+
     # training routine
-    for epoch in range(1, opt.epochs + 1):
+    for epoch in range(start_epoch, opt.epochs + 1):
         adjust_learning_rate(opt, optimizer, epoch)
 
         # train for one epoch

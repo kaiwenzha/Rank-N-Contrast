@@ -44,6 +44,9 @@ Download AgeDB dataset from [here](https://ibug.doc.ic.ac.uk/resources/agedb/) a
     ```
   to train the regressor.
 
+### Model Checkpoints
+The checkpoints of the encoder and the regressor trained on AgeDB dataset are available [here](https://drive.google.com/file/d/11_W-wArbk5lgTCKyJY0fsPoALbx_Qkno/view?usp=sharing).
+
 ### Citation
 If you use this code for your research, please cite our paper:
 ```bibtex
