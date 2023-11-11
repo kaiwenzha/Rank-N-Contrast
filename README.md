@@ -50,7 +50,7 @@ The checkpoints of the encoder and the regressor trained on AgeDB dataset are av
 ### Citation
 If you use this code for your research, please cite our paper:
 ```bibtex
-@inproceedings{zha2023rankncontrast,
+@inproceedings{zha2023rank,
     title={Rank-N-Contrast: Learning Continuous Representations for Regression},
     author={Zha, Kaiwen and Cao, Peng and Son, Jeany and Yang, Yuzhe and Katabi, Dina},
     booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
