@@ -9,7 +9,7 @@ Rank-N-Contrast: Learning Continuous Representations for Regression\
 _NeurIPS 2023 (Spotlight)_
 
 ### Loss Function
-The loss function [`RnCLoss`](./loss.py#L34) in [`loss.py`](./loss.py) takes `features` and `labels` as input, and return the loss.
+The loss function [`RnCLoss`](./loss.py#L34) in [`loss.py`](./loss.py) takes `features` and `labels` as input, and return the loss value.
 ```python
 from loss import RnCLoss
 
