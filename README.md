@@ -1,6 +1,6 @@
 ## Rank-N-Contrast: Learning Continuous Representations for Regression
 
-[Paper](https://arxiv.org/abs/2210.01189) | [Talk](https://youtu.be/T7TCBDmxMO0?si=l4SBKnIu26k9uqVH) | [BibTex](assets/bibtex.txt)
+[Paper](https://arxiv.org/abs/2210.01189) | [Talk](https://youtu.be/T7TCBDmxMO0?si=l4SBKnIu26k9uqVH) | [Slides](assets/slides.pdf) | [BibTex](assets/bibtex.txt)
 
 <img src='assets/teaser.png'>
 
